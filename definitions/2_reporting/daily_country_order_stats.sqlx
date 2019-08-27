@@ -1,0 +1,16 @@
+/*
+   This script creates the table daily_country_order_stats under the default schema of the project (dataform by default) defined in dataform.json
+   https://docs.dataform.co/guides/datasets/
+*/
+
+config { type: "table" }
+
+SELECT orders.order_date      AS date,
+       customers.country      AS country,
+       SUM(orders.item_count) AS item_count,
+       SUM(orders.amount)     AS amount
+
+FROM ${ref('order_stats')} orders
+LEFT JOIN ${ref('customers')} customers ON orders.customer_id = customers.id
+
+GROUP BY 1, 2

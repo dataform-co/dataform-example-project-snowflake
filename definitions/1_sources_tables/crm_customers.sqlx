@@ -1,0 +1,37 @@
+/*
+   This script creates the table crm_customers under the "sources" schema
+   https://docs.dataform.co/guides/datasets/
+*/
+
+config {
+  type: "table",
+  schema: "sources"
+}
+
+SELECT id AS id,
+       first_name AS first_name,
+       last_name AS last_name,
+       email AS email,
+       country AS country
+FROM
+  (SELECT '1' AS id, 'Matt' AS first_name, 'Smith' AS last_name, 'matts@hotmail.tz' AS email, 'UK' AS country) UNION ALL
+  (SELECT '2' AS id, 'Julia' AS first_name, 'Johnson' AS last_name, 'jjohnson@company.net' AS email, 'UK' AS country) UNION ALL
+  (SELECT '3' AS id, 'John' AS first_name, 'Williams' AS last_name, 'jw@mail.ro' AS email, 'FR' AS country) UNION ALL
+  (SELECT '4' AS id, 'Patrick' AS first_name, 'Jones' AS last_name, 'pajones87@qq.co' AS email, 'US' AS country) UNION ALL
+  (SELECT '5' AS id, 'Alicia' AS first_name, 'Brown' AS last_name, 'alicia.brown@business.com' AS email, 'US' AS country) UNION ALL
+  (SELECT '6' AS id, 'Angelina' AS first_name, 'Davis' AS last_name, 'davis.angelina@gmail.zh' AS email, 'US' AS country) UNION ALL
+  (SELECT '7' AS id, 'Elizabeth' AS first_name, 'Miller' AS last_name, 'emiller@hotmail.tz' AS email, 'UK' AS country) UNION ALL
+  (SELECT '8' AS id, 'Peter' AS first_name, 'Wilson' AS last_name, 'peterw@mail.ro' AS email, 'UK' AS country) UNION ALL
+  (SELECT '9' AS id, 'Mark' AS first_name, 'Taylor' AS last_name, 'mark.taylor@mail.ro' AS email, 'US' AS country) UNION ALL
+  (SELECT '10' AS id, 'Ben' AS first_name, 'Davies' AS last_name, 'davies.ben@hotmail.tz' AS email, 'UK' AS country) UNION ALL
+  (SELECT '11' AS id, 'Catherine' AS first_name, 'Walker' AS last_name, 'walker.c@company.net' AS email, 'FR' AS country) UNION ALL
+  (SELECT '12' AS id, 'George' AS first_name, 'Wright' AS last_name, 'george.w@aol.com' AS email, 'US' AS country) UNION ALL
+  (SELECT '13' AS id, 'Victoria' AS first_name, 'Evans' AS last_name, 'victoriaevans@caramail.com' AS email, 'FR' AS country) UNION ALL
+  (SELECT '14' AS id, 'William' AS first_name, 'Robinson' AS last_name, 'william.robinson@business.com' AS email, 'US' AS country) UNION ALL
+  (SELECT '15' AS id, 'Charles' AS first_name, 'Thompson' AS last_name, 'charles.t@mail.com' AS email, 'UK' AS country) UNION ALL
+  (SELECT '16' AS id, 'Megan' AS first_name, 'Anderson' AS last_name, 'm.anderson@international.com' AS email, 'US' AS country) UNION ALL
+  (SELECT '17' AS id, 'Louise' AS first_name, 'Harris' AS last_name, 'louise@gmail.zh' AS email, 'US' AS country) UNION ALL
+  (SELECT '18' AS id, 'Erika' AS first_name, 'Martin' AS last_name, 'erikam@gmail.zh' AS email, 'US' AS country) UNION ALL
+  (SELECT '19' AS id, 'Robert' AS first_name, 'Murphy' AS last_name, 'r.murphy@business.com' AS email, 'UK' AS country) UNION ALL
+  (SELECT '20' AS id, 'Jean' AS first_name, 'Turner' AS last_name, 'jean.turner@lycos.fr' AS email, 'FR' AS country)
+    

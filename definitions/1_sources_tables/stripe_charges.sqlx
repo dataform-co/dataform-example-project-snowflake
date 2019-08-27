@@ -1,0 +1,116 @@
+/*
+   This script creates the table stripe_charges under the "sources" schema
+   https://docs.dataform.co/guides/datasets/
+*/
+
+config {
+  type: "table",
+  schema: "sources"
+}
+
+SELECT id AS id,
+       status AS status,
+       payment_method AS payment_method,
+       amount AS amount
+FROM
+(SELECT '1' AS id, 'cancelled' AS status, 'debit_card' AS payment_method, '260' AS amount) UNION ALL
+(SELECT '2' AS id, 'pending' AS status, 'coupon' AS payment_method, '100' AS amount) UNION ALL
+(SELECT '3' AS id, 'success' AS status, 'debit_card' AS payment_method, '170' AS amount) UNION ALL
+(SELECT '4' AS id, 'success' AS status, 'coupon' AS payment_method, '250' AS amount) UNION ALL
+(SELECT '5' AS id, 'success' AS status, 'coupon' AS payment_method, '150' AS amount) UNION ALL
+(SELECT '6' AS id, 'success' AS status, 'subscription' AS payment_method, '220' AS amount) UNION ALL
+(SELECT '7' AS id, 'success' AS status, 'subscription' AS payment_method, '250' AS amount) UNION ALL
+(SELECT '8' AS id, 'success' AS status, 'debit_card' AS payment_method, '130' AS amount) UNION ALL
+(SELECT '9' AS id, 'pending' AS status, 'coupon' AS payment_method, '250' AS amount) UNION ALL
+(SELECT '10' AS id, 'pending' AS status, 'debit_card' AS payment_method, '190' AS amount) UNION ALL
+(SELECT '11' AS id, 'success' AS status, 'debit_card' AS payment_method, '220' AS amount) UNION ALL
+(SELECT '12' AS id, 'success' AS status, 'coupon' AS payment_method, '190' AS amount) UNION ALL
+(SELECT '13' AS id, 'cancelled' AS status, 'debit_card' AS payment_method, '140' AS amount) UNION ALL
+(SELECT '14' AS id, 'success' AS status, 'debit_card' AS payment_method, '210' AS amount) UNION ALL
+(SELECT '15' AS id, 'pending' AS status, 'subscription' AS payment_method, '240' AS amount) UNION ALL
+(SELECT '16' AS id, 'success' AS status, 'debit_card' AS payment_method, '210' AS amount) UNION ALL
+(SELECT '17' AS id, 'success' AS status, 'debit_card' AS payment_method, '280' AS amount) UNION ALL
+(SELECT '18' AS id, 'cancelled' AS status, 'debit_card' AS payment_method, '280' AS amount) UNION ALL
+(SELECT '19' AS id, 'pending' AS status, 'debit_card' AS payment_method, '230' AS amount) UNION ALL
+(SELECT '20' AS id, 'success' AS status, 'debit_card' AS payment_method, '130' AS amount) UNION ALL
+(SELECT '21' AS id, 'success' AS status, 'coupon' AS payment_method, '190' AS amount) UNION ALL
+(SELECT '22' AS id, 'pending' AS status, 'coupon' AS payment_method, '160' AS amount) UNION ALL
+(SELECT '23' AS id, 'success' AS status, 'debit_card' AS payment_method, '110' AS amount) UNION ALL
+(SELECT '24' AS id, 'success' AS status, 'debit_card' AS payment_method, '290' AS amount) UNION ALL
+(SELECT '25' AS id, 'success' AS status, 'debit_card' AS payment_method, '240' AS amount) UNION ALL
+(SELECT '26' AS id, 'success' AS status, 'debit_card' AS payment_method, '170' AS amount) UNION ALL
+(SELECT '27' AS id, 'success' AS status, 'subscription' AS payment_method, '280' AS amount) UNION ALL
+(SELECT '28' AS id, 'success' AS status, 'debit_card' AS payment_method, '180' AS amount) UNION ALL
+(SELECT '29' AS id, 'success' AS status, 'coupon' AS payment_method, '120' AS amount) UNION ALL
+(SELECT '30' AS id, 'success' AS status, 'debit_card' AS payment_method, '210' AS amount) UNION ALL
+(SELECT '31' AS id, 'success' AS status, 'debit_card' AS payment_method, '150' AS amount) UNION ALL
+(SELECT '32' AS id, 'success' AS status, 'coupon' AS payment_method, '210' AS amount) UNION ALL
+(SELECT '33' AS id, 'success' AS status, 'coupon' AS payment_method, '210' AS amount) UNION ALL
+(SELECT '34' AS id, 'success' AS status, 'subscription' AS payment_method, '190' AS amount) UNION ALL
+(SELECT '35' AS id, 'success' AS status, 'coupon' AS payment_method, '300' AS amount) UNION ALL
+(SELECT '36' AS id, 'cancelled' AS status, 'coupon' AS payment_method, '160' AS amount) UNION ALL
+(SELECT '37' AS id, 'success' AS status, 'subscription' AS payment_method, '220' AS amount) UNION ALL
+(SELECT '38' AS id, 'success' AS status, 'debit_card' AS payment_method, '250' AS amount) UNION ALL
+(SELECT '39' AS id, 'pending' AS status, 'subscription' AS payment_method, '280' AS amount) UNION ALL
+(SELECT '40' AS id, 'pending' AS status, 'debit_card' AS payment_method, '150' AS amount) UNION ALL
+(SELECT '41' AS id, 'success' AS status, 'subscription' AS payment_method, '120' AS amount) UNION ALL
+(SELECT '42' AS id, 'success' AS status, 'subscription' AS payment_method, '200' AS amount) UNION ALL
+(SELECT '43' AS id, 'success' AS status, 'debit_card' AS payment_method, '110' AS amount) UNION ALL
+(SELECT '44' AS id, 'pending' AS status, 'debit_card' AS payment_method, '200' AS amount) UNION ALL
+(SELECT '45' AS id, 'success' AS status, 'subscription' AS payment_method, '280' AS amount) UNION ALL
+(SELECT '46' AS id, 'success' AS status, 'debit_card' AS payment_method, '250' AS amount) UNION ALL
+(SELECT '47' AS id, 'pending' AS status, 'debit_card' AS payment_method, '300' AS amount) UNION ALL
+(SELECT '48' AS id, 'success' AS status, 'coupon' AS payment_method, '100' AS amount) UNION ALL
+(SELECT '49' AS id, 'cancelled' AS status, 'subscription' AS payment_method, '300' AS amount) UNION ALL
+(SELECT '50' AS id, 'cancelled' AS status, 'debit_card' AS payment_method, '290' AS amount) UNION ALL
+(SELECT '51' AS id, 'pending' AS status, 'coupon' AS payment_method, '150' AS amount) UNION ALL
+(SELECT '52' AS id, 'success' AS status, 'debit_card' AS payment_method, '290' AS amount) UNION ALL
+(SELECT '53' AS id, 'success' AS status, 'subscription' AS payment_method, '280' AS amount) UNION ALL
+(SELECT '54' AS id, 'cancelled' AS status, 'debit_card' AS payment_method, '270' AS amount) UNION ALL
+(SELECT '55' AS id, 'success' AS status, 'debit_card' AS payment_method, '210' AS amount) UNION ALL
+(SELECT '56' AS id, 'success' AS status, 'coupon' AS payment_method, '120' AS amount) UNION ALL
+(SELECT '57' AS id, 'pending' AS status, 'coupon' AS payment_method, '200' AS amount) UNION ALL
+(SELECT '58' AS id, 'success' AS status, 'subscription' AS payment_method, '100' AS amount) UNION ALL
+(SELECT '59' AS id, 'success' AS status, 'debit_card' AS payment_method, '230' AS amount) UNION ALL
+(SELECT '60' AS id, 'success' AS status, 'coupon' AS payment_method, '120' AS amount) UNION ALL
+(SELECT '61' AS id, 'success' AS status, 'debit_card' AS payment_method, '240' AS amount) UNION ALL
+(SELECT '62' AS id, 'pending' AS status, 'debit_card' AS payment_method, '290' AS amount) UNION ALL
+(SELECT '63' AS id, 'success' AS status, 'subscription' AS payment_method, '160' AS amount) UNION ALL
+(SELECT '64' AS id, 'success' AS status, 'debit_card' AS payment_method, '140' AS amount) UNION ALL
+(SELECT '65' AS id, 'pending' AS status, 'subscription' AS payment_method, '230' AS amount) UNION ALL
+(SELECT '66' AS id, 'success' AS status, 'coupon' AS payment_method, '220' AS amount) UNION ALL
+(SELECT '67' AS id, 'cancelled' AS status, 'debit_card' AS payment_method, '180' AS amount) UNION ALL
+(SELECT '68' AS id, 'success' AS status, 'debit_card' AS payment_method, '210' AS amount) UNION ALL
+(SELECT '69' AS id, 'success' AS status, 'debit_card' AS payment_method, '280' AS amount) UNION ALL
+(SELECT '70' AS id, 'success' AS status, 'subscription' AS payment_method, '150' AS amount) UNION ALL
+(SELECT '71' AS id, 'cancelled' AS status, 'coupon' AS payment_method, '120' AS amount) UNION ALL
+(SELECT '72' AS id, 'pending' AS status, 'debit_card' AS payment_method, '290' AS amount) UNION ALL
+(SELECT '73' AS id, 'success' AS status, 'debit_card' AS payment_method, '260' AS amount) UNION ALL
+(SELECT '74' AS id, 'pending' AS status, 'coupon' AS payment_method, '290' AS amount) UNION ALL
+(SELECT '75' AS id, 'cancelled' AS status, 'subscription' AS payment_method, '140' AS amount) UNION ALL
+(SELECT '76' AS id, 'pending' AS status, 'subscription' AS payment_method, '250' AS amount) UNION ALL
+(SELECT '77' AS id, 'pending' AS status, 'coupon' AS payment_method, '260' AS amount) UNION ALL
+(SELECT '78' AS id, 'pending' AS status, 'subscription' AS payment_method, '290' AS amount) UNION ALL
+(SELECT '79' AS id, 'success' AS status, 'coupon' AS payment_method, '220' AS amount) UNION ALL
+(SELECT '80' AS id, 'success' AS status, 'subscription' AS payment_method, '270' AS amount) UNION ALL
+(SELECT '81' AS id, 'success' AS status, 'subscription' AS payment_method, '200' AS amount) UNION ALL
+(SELECT '82' AS id, 'success' AS status, 'debit_card' AS payment_method, '260' AS amount) UNION ALL
+(SELECT '83' AS id, 'success' AS status, 'subscription' AS payment_method, '230' AS amount) UNION ALL
+(SELECT '84' AS id, 'pending' AS status, 'debit_card' AS payment_method, '100' AS amount) UNION ALL
+(SELECT '85' AS id, 'success' AS status, 'debit_card' AS payment_method, '160' AS amount) UNION ALL
+(SELECT '86' AS id, 'cancelled' AS status, 'subscription' AS payment_method, '280' AS amount) UNION ALL
+(SELECT '87' AS id, 'success' AS status, 'debit_card' AS payment_method, '200' AS amount) UNION ALL
+(SELECT '88' AS id, 'pending' AS status, 'subscription' AS payment_method, '210' AS amount) UNION ALL
+(SELECT '89' AS id, 'pending' AS status, 'subscription' AS payment_method, '150' AS amount) UNION ALL
+(SELECT '90' AS id, 'cancelled' AS status, 'coupon' AS payment_method, '300' AS amount) UNION ALL
+(SELECT '91' AS id, 'success' AS status, 'debit_card' AS payment_method, '200' AS amount) UNION ALL
+(SELECT '92' AS id, 'cancelled' AS status, 'debit_card' AS payment_method, '160' AS amount) UNION ALL
+(SELECT '93' AS id, 'pending' AS status, 'debit_card' AS payment_method, '170' AS amount) UNION ALL
+(SELECT '94' AS id, 'pending' AS status, 'debit_card' AS payment_method, '160' AS amount) UNION ALL
+(SELECT '95' AS id, 'cancelled' AS status, 'subscription' AS payment_method, '260' AS amount) UNION ALL
+(SELECT '96' AS id, 'pending' AS status, 'debit_card' AS payment_method, '260' AS amount) UNION ALL
+(SELECT '97' AS id, 'success' AS status, 'subscription' AS payment_method, '200' AS amount) UNION ALL
+(SELECT '98' AS id, 'cancelled' AS status, 'subscription' AS payment_method, '260' AS amount) UNION ALL
+(SELECT '99' AS id, 'pending' AS status, 'subscription' AS payment_method, '220' AS amount) UNION ALL
+(SELECT '100' AS id, 'pending' AS status, 'debit_card' AS payment_method, '200' AS amount)
+    

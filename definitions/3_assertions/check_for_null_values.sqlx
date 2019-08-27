@@ -1,0 +1,30 @@
+/*
+   This script tests that no null values exist in the email field in the customer table
+   The assertion fails if it returns any row. 
+   If any row is returned by the assertion, a view will be created under the assertion schema of this project (dataform_assertions by default) defined in dataform.json.
+   https://docs.dataform.co/guides/assertions/
+*/
+
+config { type: "assertion" }
+
+WITH customers AS (
+SELECT * FROM ${ref('customers')}
+)
+
+SELECT * FROM customers WHERE email IS NULL
+
+/* To see what happens when an assertion fails. Comment out the CTE above and uncomment the one below */
+
+/*
+with customers as (
+    SELECT id as id, first_name as first_name, last_name as last_name, email as email, country as country
+    FROM
+        (SELECT '1' as id, 'Matt' as first_name, 'Smith' as last_name, 'matts@hotmail.tz' as email, 'UK' as country) UNION ALL
+        (SELECT '1' as id, 'Matt' as first_name, 'Smith' as last_name, NULL as email, 'UK' as country) UNION ALL -- has null value in email
+        (SELECT '2' as id, 'Julia' as first_name, 'Johnson' as last_name, 'jjohnson@company.net' as email, 'UK' as country) UNION ALL
+        (SELECT '3' as id, 'John' as first_name, 'Williams' as last_name, 'jw@mail.ro' as email, 'FR' as country) UNION ALL
+        (SELECT '4' as id, 'Patrick' as first_name, 'Jones' as last_name, 'pajones87@qq.co' as email, 'US' as country) UNION ALL
+        (SELECT '5' as id, 'Alicia' as first_name, 'Brown' as last_name, 'alicia.brown@business.com' as email, 'US' as country) UNION ALL
+        (SELECT '6' as id, 'Angelina' as first_name, 'Davis' as last_name, 'davis.angelina@gmail.zh' as email, 'US' as country) 
+)
+*/

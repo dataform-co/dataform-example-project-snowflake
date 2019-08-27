@@ -1,0 +1,24 @@
+/*
+   This script creates the table customers under the default schema of the project (dataform by default) defined in dataform.json
+   https://docs.dataform.co/guides/datasets/
+   Read about dataform.json and project configuration: https://docs.dataform.co/guides/configuration/
+*/
+
+config { type: "table" }
+
+SELECT customers.id          AS id,
+       customers.first_name  AS first_name,
+       customers.last_name   AS last_name,
+       customers.email       AS email,
+       customers.country     AS country,
+       COUNT(orders.id)      AS order_count,
+       SUM(orders.amount)    AS total_spent
+
+FROM ${ref('crm_customers')} customers
+LEFT JOIN ${ref('order_stats')} orders ON customers.id = orders.customer_id
+
+WHERE customers.id IS NOT NULL
+      AND customers.first_name <> 'Internal account'
+      AND country IN ('UK', 'US', 'FR', 'ES', 'NG', 'JP')
+
+GROUP BY 1, 2, 3, 4, 5

@@ -1,0 +1,25 @@
+/*
+   This script tests that the customers table only contains one row per id
+   The assertion fails if it returns any row. 
+   If any row is returned by the assertion, a view will be created under the assertion schema of this project (dataform_assertions by default) defined in dataform.json.
+   https://docs.dataform.co/guides/assertions/
+*/
+
+config { type: "assertion" }
+
+WITH base AS (
+
+SELECT
+  id as id,
+  SUM(1) as row_count
+FROM ${ref('customers')}
+GROUP BY 
+  1
+)
+  
+SELECT
+  *
+FROM
+  base
+WHERE
+  row_count > 1
