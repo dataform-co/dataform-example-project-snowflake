@@ -4,7 +4,8 @@
    https://docs.dataform.co/guides/js-api/
 */
 
-assert("null_values_customer_firstname").query(ctx=>`SELECT * FROM ${ctx.ref('customers')} WHERE first_name IS NULL`);
-assert("null_values_customer_lastname").query(ctx=>`SELECT * FROM ${ctx.ref('customers')} WHERE last_name IS NULL`);
-assert("null_values_customer_id").query(ctx=>`SELECT * FROM ${ctx.ref('customers')} WHERE id IS NULL`);
+const fields = ["first_name", "last_name", "id"];
 
+fields.forEach(field => {
+    assert(`null_values_customer_${field}`).tags(["reporting","daily"]).query(ctx=>`SELECT * FROM ${ctx.ref('customers')} WHERE ${field} IS NULL`);
+})

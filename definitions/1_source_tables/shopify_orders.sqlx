@@ -5,7 +5,8 @@
 
 config {
   type: "table",
-  schema: "sources"
+  schema: "sources",
+  tags: ["sources", "daily"]
 }
 
 SELECT id AS id,

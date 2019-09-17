@@ -3,7 +3,10 @@
    https://docs.dataform.co/guides/datasets/
 */
 
-config { type: "table" }
+config {
+  type: "table",
+  tags: ["reporting", "daily"]
+}
 
 SELECT orders.order_date      AS date,
        customers.country      AS country,

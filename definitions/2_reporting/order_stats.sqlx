@@ -4,7 +4,10 @@
 */
 
 
-config { type: "table" }
+config {
+  type: "table",
+  tags: ["reporting", "daily"]
+}
 
 SELECT orders.date            AS order_date,
        orders.id              AS id,

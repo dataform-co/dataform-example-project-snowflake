@@ -5,7 +5,10 @@
    https://docs.dataform.co/guides/assertions/
 */
 
-config { type: "assertion" }
+config {
+  type: "assertion",
+  tags: ["reporting", "daily"]
+}
 
 WITH base AS (
 

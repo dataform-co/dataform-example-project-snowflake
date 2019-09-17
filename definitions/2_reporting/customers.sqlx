@@ -4,7 +4,11 @@
    Read about dataform.json and project configuration: https://docs.dataform.co/guides/configuration/
 */
 
-config { type: "table" }
+config {
+  type: "table",
+  tags: ["reporting", "daily"]
+}
+
 
 SELECT customers.id          AS id,
        customers.first_name  AS first_name,
