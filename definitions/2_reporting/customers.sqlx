@@ -6,7 +6,16 @@
 
 config {
   type: "table",
-  tags: ["reporting", "daily"]
+  tags: ["reporting", "daily"],
+  description: "This table contains all information about our customers. The data comes from the CRM and orders.",
+  columns: [ id: "",
+            first_name: "First name of the customer",
+            last_name: "Last name of the customer",
+            email: "Customer email",
+            country: "Customer country",
+            order_count: "Lifetime number of orders made by the customer",
+            total_spent: "Lifetime customer spend",
+  ]
 }
 
 
