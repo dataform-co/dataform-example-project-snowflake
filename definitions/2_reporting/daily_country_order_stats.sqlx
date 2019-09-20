@@ -5,7 +5,13 @@
 
 config {
   type: "table",
-  tags: ["reporting", "daily"]
+  tags: ["reporting", "daily"],
+  description: "This table contains summary stats by date aggregated by country",
+  columns: { date: "Date of the order",
+            country: "Country of the user",
+            item_count: "Number of items ordered that day",
+            amount: "Total amount of revenue generated from orders that day, in US dollars using a floating FX rate"
+  }
 }
 
 SELECT orders.order_date      AS date,
