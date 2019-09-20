@@ -4,7 +4,7 @@
 */
 
 config {
-  type: "table",
+  type: "view",
   schema: "sources",
   tags: ["sources", "daily"]
 }
