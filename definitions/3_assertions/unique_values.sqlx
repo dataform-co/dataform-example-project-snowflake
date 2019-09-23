@@ -1,7 +1,6 @@
 /*
    This script tests that the customers table only contains one row per id
-   The assertion fails if it returns any row. 
-   If any row is returned by the assertion, a view will be created under the assertion schema of this project (dataform_assertions by default) defined in dataform.json.
+   The assertion fails if it returns any row. If any row is returned by the assertion, a view will be created under the assertion schema of this project (dataform_assertions by default) defined in dataform.json.
    https://docs.dataform.co/guides/assertions/
 */
 
