@@ -1,5 +1,5 @@
 /*
-   This script creates the table crm_customers under the "sources" schema
+   This script creates the table crm_customers under the "sources" schema. This script uses UNION ALLs to generate fake data for the purpose of this demo. 
    https://docs.dataform.co/guides/datasets/
 */
 
