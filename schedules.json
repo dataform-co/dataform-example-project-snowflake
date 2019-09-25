@@ -1,1 +1,15 @@
-{}
+{
+  "schedules": [{
+    "name": "hourly",
+    "options": {
+      "includeDependencies": false,
+      "fullRefresh": false
+    },
+    "cron": "00 09 * * *",
+    "notification": {
+      "emails": ["team@dataform.co"],
+      "onSuccess": false,
+      "onFailure": true
+    }
+  }]
+}
