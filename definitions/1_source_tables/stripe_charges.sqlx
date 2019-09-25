@@ -1,5 +1,5 @@
 /*
-   This script creates the table stripe_charges under the "sources" schema. This script uses UNION ALLs to generate fake data for the purpose of this demo. 
+   This script creates the table stripe_charges under the "sources" schema.
    https://docs.dataform.co/guides/datasets/
 */
 
