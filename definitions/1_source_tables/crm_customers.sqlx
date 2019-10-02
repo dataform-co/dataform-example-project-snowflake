@@ -16,3 +16,5 @@ SELECT id AS id,
        country AS country
 FROM
   crm.customer
+
+  
