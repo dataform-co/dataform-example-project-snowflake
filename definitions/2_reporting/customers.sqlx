@@ -34,3 +34,4 @@ WHERE customers.id IS NOT NULL
       AND country IN ('UK', 'US', 'FR', 'ES', 'NG', 'JP')
 
 GROUP BY 1, 2, 3, 4, 5
+
