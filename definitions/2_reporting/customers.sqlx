@@ -4,6 +4,7 @@
    Read about dataform.json and project configuration: https://docs.dataform.co/guides/configuration/
 */
 
+
 config {
   type: "table",
   tags: ["reporting", "daily"],
