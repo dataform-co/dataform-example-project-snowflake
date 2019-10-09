@@ -9,7 +9,7 @@ config {
   tags: ["reporting", "daily"],  
   description: "This table contains summary stats by date aggregated by country",
   columns: { order_date: "Date of the order",
-  id: "ID of the order",
+            id: "ID of the order",
             customer_id: "ID of the customer in the CRM",
             order_status: "Status of the order, from Shopify",
             payment_status: "Status of payment, from Stripe",
