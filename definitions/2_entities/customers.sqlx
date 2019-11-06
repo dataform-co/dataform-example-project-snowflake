@@ -36,3 +36,4 @@ WHERE customers.id IS NOT NULL
 
 GROUP BY 1, 2, 3, 4, 5
 
+
