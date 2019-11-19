@@ -35,3 +35,4 @@ WHERE orders.id <= 999
       AND charges.payment_method IN ('debit_card', 'subscription', 'coupon')
 
 GROUP BY 1, 2, 3, 4, 5, 6
+
