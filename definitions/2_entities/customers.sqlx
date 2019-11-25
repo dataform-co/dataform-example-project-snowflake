@@ -4,7 +4,6 @@
    Read about dataform.json and project configuration: https://docs.dataform.co/guides/configuration/
 */
 
-
 config {
   type: "table",
   tags: ["reporting", "daily"],
@@ -18,6 +17,7 @@ config {
             total_spent: "Lifetime customer spend",
   }
 }
+
 
 SELECT customers.id          AS id,
        customers.first_name  AS first_name,
@@ -35,6 +35,7 @@ WHERE customers.id IS NOT NULL
       AND country IN ('UK', 'US', 'FR', 'ES', 'NG', 'JP')
 
 GROUP BY 1, 2, 3, 4, 5
+
 
 
 
