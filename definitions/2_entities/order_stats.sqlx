@@ -26,8 +26,7 @@ SELECT orders.date            AS order_date,
        charges.status         AS payment_status,
        charges.payment_method AS payment_method,
        SUM(orders.item_count) AS item_count,
-       SUM(charges.amount)    AS amount,
-       SUM(charges.amount)    AS amount2
+       SUM(charges.amount)    AS amount
 
 FROM ${ref('shopify_orders')} orders
 LEFT JOIN ${ref('stripe_charges')} charges ON orders.payment_id = charges.id
