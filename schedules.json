@@ -1,15 +1,20 @@
 {
   "schedules": [{
-    "name": "hourly",
+    "name": "daily",
     "options": {
       "includeDependencies": false,
       "fullRefresh": false
     },
     "cron": "00 09 * * *",
-    "notification": {
-      "emails": ["team@dataform.co"],
-      "onSuccess": false,
-      "onFailure": true
+    "notifications": [{
+      "events": ["failure"],
+      "channels": ["Email-channel-1"]
+    }]
+  }],
+  "notificationChannels": [{
+    "name": "team-email",
+    "email": {
+      "to": ["team@dataform.co"]
     }
   }]
 }
