@@ -18,14 +18,14 @@ config {
   }
 }
 
-
 SELECT customers.id          AS id,
        customers.first_name  AS first_name,
        customers.last_name   AS last_name,
        customers.email       AS email,
        customers.country     AS country,
        COUNT(orders.id)      AS order_count,
-       SUM(orders.amount)    AS total_spent
+       SUM(orders.amount)    AS total_spent,
+       SUM(orders.amount)    AS total_spent2
 
 FROM ${ref('crm_customers')} customers
 LEFT JOIN ${ref('order_stats')} orders ON customers.id = orders.customer_id
