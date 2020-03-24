@@ -15,6 +15,10 @@ config {
             country: "Customer country",
             order_count: "Lifetime number of orders made by the customer",
             total_spent: "Lifetime customer spend",
+  },
+  assertions: {
+    nonNull: ["first_name", "last_name", "id", "email"],
+    uniqueKey: ["id"]
   }
 }
 

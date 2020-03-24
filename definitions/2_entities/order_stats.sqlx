@@ -16,6 +16,13 @@ config {
             payment_method: "Credit card of ACH",
             item_count: "Number of items in that order",
             amount: "Amount charged for that order, in US dollars using a floating FX rate"
+  },
+  assertions: {
+    nonNull: ["order_date", "id", "customer_id"],
+    uniqueKey: ["id"],
+    rowConditions: [
+      "item_count >= 0"
+    ]
   }
 }
 
