@@ -1,0 +1,51 @@
+config {
+  type: "table",
+  tags: ["reporting", "daily"],
+  description: "This table contains summary stats by date aggregated by country",
+  columns: {
+    order_date: "Date of the order",
+    order_id: "ID of the order",
+    customer_id: "ID of the customer in the CRM",
+    order_status: "Status of the order, from Shopify",
+    payment_status: "Status of payment, from Stripe",
+    payment_method: "Credit card of ACH",
+    item_count: "Number of items in that order",
+    amount: "Amount charged for that order, in US dollars using a floating FX rate"
+  },
+  assertions: {
+    nonNull: ["order_date", "order_id", "customer_id"],
+    uniqueKey: ["order_id"],
+    rowConditions: [
+      "item_count >= 0"
+    ]
+  },
+  redshift: {
+    sortKeys: ["order_date"],
+    sortStyle: "compound",
+    distStyle: "key",
+    distKey: "order_id"
+  }
+}
+
+select
+  orders.date as order_date,
+  orders.order_id as order_id,
+  orders.customer_id as customer_id,
+  orders.order_status as order_status,
+  charges.payment_status as payment_status,
+  charges.payment_method as payment_method,
+  sum(orders.item_count) as item_count,
+  sum(charges.amount) as amount
+from
+  ${ref("stg_shopify_orders")} orders
+  left join ${ref("stg_stripe_charges")} charges 
+    on orders.payment_id = charges.id
+where
+  orders.order_id is not null
+  and charges.payment_method in (
+    'debit_card',
+    'subscription',
+    'coupon'
+  )
+group by
+  1,2,3,4,5,6
