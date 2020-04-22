@@ -13,39 +13,27 @@ config {
     amount: "Amount charged for that order, in US dollars using a floating FX rate"
   },
   assertions: {
-    nonNull: ["order_date", "order_id", "customer_id"],
-    uniqueKey: ["order_id"],
+    nonNull: ["order_date", "order_key", "customer_key"],
+    uniqueKey: ["order_key"],
     rowConditions: [
-      "item_count >= 0"
+      "total_parts >= 0"
     ]
-  },
-  redshift: {
-    sortKeys: ["order_date"],
-    sortStyle: "compound",
-    distStyle: "key",
-    distKey: "order_id"
   }
 }
 
 select
-  orders.date as order_date,
-  orders.order_id as order_id,
-  orders.customer_id as customer_id,
+  orders.order_key as order_key,
+  orders.customer_key as customer_key,
   orders.order_status as order_status,
-  charges.payment_status as payment_status,
-  charges.payment_method as payment_method,
-  sum(orders.item_count) as item_count,
-  sum(charges.amount) as amount
+  orders.order_date as order_date,
+  orders.total_price as total_price,
+  count(lineitems.part_key) as line_items,
+  sum(lineitems.quantity) as total_parts
 from
-  ${ref("stg_shopify_orders")} orders
-  left join ${ref("stg_stripe_charges")} charges 
-    on orders.payment_id = charges.id
+  ${ref("stg_orders")} orders
+  left join ${ref("stg_lineitems")} lineitems 
+    on orders.order_key = lineitems.order_key
 where
-  orders.order_id is not null
-  and charges.payment_method in (
-    'debit_card',
-    'subscription',
-    'coupon'
-  )
+  orders.order_key is not null
 group by
-  1,2,3,4,5,6
+  1,2,3,4,5

@@ -1,0 +1,15 @@
+config {
+  type: "table",
+  schema: "sources",
+  tags: ["staging", "daily"],
+  description: "Cleaned version of the raw orders table."
+}
+
+select
+  o_orderkey as order_key,
+  o_custkey as customer_key,
+  o_orderstatus as order_status,
+  o_orderdate as order_date,
+  o_totalprice as total_price
+from
+  ${ref("ORDERS")}

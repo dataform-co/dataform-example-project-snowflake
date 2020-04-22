@@ -1,43 +1,38 @@
 config {
   type: "table",
   tags: ["reporting", "daily"],
-  description: "This table contains all information about customers, bringing all CRM, shopify and stripe data for individual customers into one place.",
+  description: "This table contains all information about customers, bringing all orders and lineitems information about a customer into one place.",
   columns: {
-    id: "unique customer identifier",
-    first_name: "First name of the customer",
-    last_name: "Last name of the customer",
-    email: "Customer email",
-    country: "Customer country",
+    customer_key: "unique customer identifier",
+    full_name: "Full name of the customer",
+    address: "Customer's address",
+    phone_number: "Customer phone number",
+    country_name: "Customer country (full name)",
+    country_group: "Customer country group",
     order_count: "Lifetime number of orders made by the customer",
-    total_spent: "Lifetime customer spend",
+    total_spent: "Lifetime customer spend"
   },
   assertions: {
-    nonNull: ["first_name", "last_name", "id", "email"],
-    uniqueKey: ["id"]
-  },
-  redshift: {
-    distStyle: "key",
-    distKey: "id"
+    nonNull: ["full_name", "customer_key", "country_name"],
+    uniqueKey: ["customer_key"]
   }
 }
 
 select
-  customers.id as id,
-  customers.first_name as first_name,
-  customers.last_name as last_name,
-  customers.email as email,
-  customers.country as country,
-  ${common.countryGroup("customers.country")} as country_group,
-  count(orders.order_id) as order_count,
-  sum(orders.amount) as total_spent,
-  sum(orders.amount) as total_spent2
+  customers.customer_key,
+  customers.full_name,
+  customers.address,
+  customers.phone_number,
+  customers.country_name,
+  ${common.countryGroup("customers.country_name")} as country_group,
+  count(orders.order_key) as order_count,
+  sum(orders.total_price) as total_spent
 from
-  ${ref("stg_crm_customers")} customers
-  left join ${ref("order_stats")} orders 
-    on customers.id = orders.customer_id
+  ${ref("STG_CUSTOMER")} customers
+  left join ${ref("STG_ORDERS")} orders 
+    on customers.customer_key = orders.customer_key
 where
-  customers.id is not null
-  and customers.first_name <> 'internal account'
-  and country in ('uk', 'us', 'fr', 'es', 'ng', 'jp')
+  customers.customer_key is not null
+  and customers.full_name <> 'internal account'
 group by
   1,2,3,4,5,6

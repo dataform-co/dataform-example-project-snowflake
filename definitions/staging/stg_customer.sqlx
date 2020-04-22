@@ -1,0 +1,17 @@
+config {
+  type: "table",
+  schema: "sources",
+  tags: ["staging", "daily"],
+  description: "Cleaned version of the raw customer table."
+}
+
+select
+  c_custkey as customer_key,
+  c_name as full_name,
+  c_address as address,
+  c_phone as phone_number,
+  n_name as country_name
+from
+  ${ref("customer")} as customer
+  left join ${ref("nation")} as nations
+    on customer.c_nationkey = nations.n_nationkey

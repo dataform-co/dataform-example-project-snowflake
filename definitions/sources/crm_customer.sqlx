@@ -1,7 +1,0 @@
-config {
-  type: "declaration",
-  schema: "crm",
-  name: "customer",
-  tags: ["source"],
-  description: "Raw CRM customers table"
-}

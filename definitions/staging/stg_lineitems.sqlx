@@ -1,0 +1,20 @@
+config {
+  type: "table",
+  schema: "sources",
+  tags: ["staging", "daily"],
+  description: "Cleaned version of the raw lineitems table."
+}
+
+select
+  l_orderkey as order_key,
+  l_partkey as part_key,
+  l_linenumber as line_number,
+  coalesce(l_quantity, 0) as quantity,
+  l_discount as discount,
+  l_tax as tax,
+  l_returnflag as return_flag,
+  l_shipdate as ship_date,
+  l_commitdate as commit_date,
+  l_receiptdate as receipt_date
+from
+  ${ref("lineitem")}

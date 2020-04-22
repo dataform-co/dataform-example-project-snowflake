@@ -1,7 +1,0 @@
-config {
-  type: "declaration",
-  schema: "stripe",
-  name: "charges",
-  tags: ["source"],
-  description: "Raw stripe charges table"
-}
