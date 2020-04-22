@@ -1,0 +1,43 @@
+config {
+  type: "table",
+  tags: ["reporting", "daily"],
+  description: "This table contains all information about customers, bringing all CRM, shopify and stripe data for individual customers into one place.",
+  columns: {
+    id: "unique customer identifier",
+    first_name: "First name of the customer",
+    last_name: "Last name of the customer",
+    email: "Customer email",
+    country: "Customer country",
+    order_count: "Lifetime number of orders made by the customer",
+    total_spent: "Lifetime customer spend",
+  },
+  assertions: {
+    nonNull: ["first_name", "last_name", "id", "email"],
+    uniqueKey: ["id"]
+  },
+  redshift: {
+    distStyle: "key",
+    distKey: "id"
+  }
+}
+
+select
+  customers.id as id,
+  customers.first_name as first_name,
+  customers.last_name as last_name,
+  customers.email as email,
+  customers.country as country,
+  ${common.countryGroup("customers.country")} as country_group,
+  count(orders.order_id) as order_count,
+  sum(orders.amount) as total_spent,
+  sum(orders.amount) as total_spent2
+from
+  ${ref("stg_crm_customers")} customers
+  left join ${ref("order_stats")} orders 
+    on customers.id = orders.customer_id
+where
+  customers.id is not null
+  and customers.first_name <> 'internal account'
+  and country in ('uk', 'us', 'fr', 'es', 'ng', 'jp')
+group by
+  1,2,3,4,5,6

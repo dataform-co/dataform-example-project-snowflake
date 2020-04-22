@@ -1,0 +1,31 @@
+config {
+  type: "table",
+  tags: ["reporting", "daily"],
+  description: "This table contains summary stats by date aggregated by country",
+  columns: {
+    date: "Date of the order",
+    country: "Country of the user",
+    item_count: "Number of items ordered that day",
+    amount: "Total amount of revenue generated from orders that day, in US dollars using a floating FX rate"
+  },
+  assertions: {
+    uniqueKey: ["date", "country"]
+  },
+  redshift: {
+    sortKeys: ["date"],
+    sortStyle: "compound"
+  }
+}
+
+select
+  orders.order_date as date,
+  customers.country as country,
+  customers.country_group as country_group,
+  sum(orders.item_count) as item_count,
+  sum(orders.amount) as amount
+from
+  ${ref("order_stats")} orders
+  left join ${ref("customer_stats")} customers
+    on orders.customer_id = customers.id
+group by
+  1,2,3

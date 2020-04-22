@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@dataform/core": "1.4.16"
+        "@dataform/core": "1.5.4"
     }
 }
