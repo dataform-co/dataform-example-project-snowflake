@@ -3,6 +3,5 @@ config {
   database: "SNOWFLAKE_SAMPLE_DATA",
   schema: "TPCH_SF1",
   name: "LINEITEM",
-  tags: ["source"],
   description: "Raw lineitem table"
 }

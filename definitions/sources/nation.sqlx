@@ -3,6 +3,5 @@ config {
   database: "SNOWFLAKE_SAMPLE_DATA",
   schema: "TPCH_SF1",
   name: "NATION",
-  tags: ["source"],
   description: "Raw nations table"
 }
