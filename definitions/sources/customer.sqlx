@@ -3,6 +3,5 @@ config {
   database: "SNOWFLAKE_SAMPLE_DATA",
   schema: "TPCH_SF1",
   name: "CUSTOMER",
-  tags: ["source"],
   description: "Raw customers table"
 }
