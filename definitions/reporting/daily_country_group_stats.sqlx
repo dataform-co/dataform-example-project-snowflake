@@ -7,7 +7,8 @@ select
   customers.country_group as country_group,
   count(orders.order_key) as order_count,
   sum(orders.total_price) as total_price,
-  sum(line_items) as line_items
+  sum(line_items) as line_items,
+ sum(line_items) as line_items2
 from
   ${ref("order_stats")} orders
   left join ${ref("customer_stats")} customers
