@@ -17,6 +17,10 @@
           "tags": [
             "reporting"
           ]
+        },
+        {
+          "name": "new_schedule",
+          "cron": "12 12 * * *"
         }
       ],
       "gitRef": "master"

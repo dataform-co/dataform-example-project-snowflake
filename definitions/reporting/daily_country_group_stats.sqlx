@@ -1,0 +1,30 @@
+config {
+  type: "table",
+  tags: ["daily"],
+   description: "This table contains summary stats by date aggregated by country",
+  columns: {
+    date: "Date of the order",
+    country_group: "Country group of the user",
+    order_count: "Number of orders that day",
+    total_price: "Total price of all orders from that day, in US dollars using a floating FX rate",
+    line_items: "Number of line items on orders that day"
+  },
+   assertions: {
+    uniqueKey: ["date", "country_group"],
+    nonNull: ["date"],
+    rowConditions: ["line_items > 0"]
+  }
+}
+
+select
+  orders.order_date as date,
+  customers.country_group as country_group,
+  count(orders.order_key) as order_count,
+  sum(orders.total_price) as total_price,
+  sum(line_items) as line_items
+from
+  ${ref("order_stats")} orders
+  left join ${ref("customer_stats")} customers
+    on orders.customer_key = customers.customer_key
+group by
+  1,2 
