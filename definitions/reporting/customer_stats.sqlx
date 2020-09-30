@@ -18,6 +18,7 @@ config {
   }
 }
 
+
 select
   customers.customer_key,
   customers.full_name,
