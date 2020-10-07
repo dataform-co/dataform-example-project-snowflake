@@ -2,7 +2,7 @@ config {
   type: "table",
   schema: "staging",
   tags: ["staging", "daily"],
-  description: "Cleaned version of the raw customer table."
+  description: "Cleaned version of the raw customer table. Needs more info"
 }
 
 select
