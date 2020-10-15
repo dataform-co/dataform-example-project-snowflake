@@ -2,7 +2,9 @@
   "environments": [
     {
       "name": "production",
-      "configOverride": {},
+      "configOverride": {
+        "defaultDatabase": "production"
+      },
       "schedules": [
         {
           "name": "daily",
