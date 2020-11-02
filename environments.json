@@ -21,6 +21,13 @@
         {
           "name": "new_schedule",
           "cron": "12 12 * * *"
+        },
+        {
+          "name": "hourly reporting",
+          "cron": "52 */1 * * *",
+          "tags": [
+            "reporting"
+          ]
         }
       ],
       "gitRef": "master"
