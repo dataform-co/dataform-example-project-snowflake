@@ -28,8 +28,19 @@
           "tags": [
             "reporting"
           ]
+        },
+        {
+          "name": "daily demo",
+          "cron": "24 18 * * tue,wed,thu,fri,mon",
+          "tags": [
+            "reporting"
+          ]
         }
       ],
+      "gitRef": "master"
+    },
+    {
+      "name": "dev",
       "gitRef": "master"
     }
   ]
