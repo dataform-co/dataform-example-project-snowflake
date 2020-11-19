@@ -21,6 +21,7 @@ config {
   }
 }
 
+
 select
   orders.order_key as order_key,
   orders.customer_key as customer_key,
