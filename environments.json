@@ -17,34 +17,6 @@
           "tags": [
             "reporting"
           ]
-        },
-        {
-          "name": "new_schedule",
-          "cron": "12 12 * * *"
-        },
-        {
-          "name": "hourly reporting",
-          "cron": "52 */1 * * *",
-          "tags": [
-            "reporting"
-          ]
-        },
-        {
-          "name": "daily demo",
-          "cron": "24 18 * * tue,wed,thu,fri,mon",
-          "tags": [
-            "reporting"
-          ]
-        },
-        {
-          "name": "new_schedule_2",
-          "cron": "28 */1 * * *",
-          "tags": [
-            "reporting"
-          ],
-          "options": {
-            "includeDependents": false
-          }
         }
       ],
       "gitRef": "master"
