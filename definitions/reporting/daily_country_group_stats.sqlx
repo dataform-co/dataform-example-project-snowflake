@@ -1,5 +1,6 @@
 config {
   type: "table",
+  tags: ["reporting"],
    description: "This table contains summary stats by date aggregated by country",
   columns: {
     date: "Date of the order",

@@ -35,6 +35,16 @@
           "tags": [
             "reporting"
           ]
+        },
+        {
+          "name": "new_schedule_2",
+          "cron": "28 */1 * * *",
+          "tags": [
+            "reporting"
+          ],
+          "options": {
+            "includeDependents": false
+          }
         }
       ],
       "gitRef": "master"
